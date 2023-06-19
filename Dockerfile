@@ -1,6 +1,6 @@
 FROM alpine:3.16.2
 
-MAINTAINER https://github.com/zhangliqiang/fabric8-java-alpine-openjdk8-jre
+MAINTAINER patelhimanshus@gmail.com
 
 USER root
 
@@ -11,7 +11,7 @@ RUN mkdir -p /deployments \
 
 # JAVA_APP_DIR is used by run-java.sh for finding the binaries
 ENV JAVA_APP_DIR=/deployments \
-    JAVA_MAJOR_VERSION=8 \
+    JAVA_MAJOR_VERSION=17 \
     JAVA_OPTIONS=-Dfile.encoding=utf-8 \
     LOG4J_FORMAT_MSG_NO_LOOKUPS=true
 
@@ -19,7 +19,7 @@ ENV JAVA_APP_DIR=/deployments \
 # according to http://www.2uo.de/myths-about-urandom/
 RUN apk add --update \
     curl \
-    openjdk8-jre-base=8.345.01-r0 \
+    
  && apk add --no-cache nss  \
  && rm /var/cache/apk/* \
  && echo "securerandom.source=file:/dev/urandom" >> /usr/lib/jvm/default-jvm/jre/lib/security/java.security
